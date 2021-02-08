@@ -11,6 +11,8 @@ document.getElementById('search-btn').addEventListener('click', function(){
     .then(data =>{
         displayMeals(data.meals);
     })
+
+    // If Meal Not Find 
     .catch(error => {
         const displayFoods = document.getElementById('display-foods');
         displayFoods.innerHTML = "";
@@ -20,12 +22,8 @@ document.getElementById('search-btn').addEventListener('click', function(){
         notFound.innerHTML = `Sorry! This item is not available...Please Try again!`;
         notFoundFood.appendChild(notFound);
     })
-
-
-
-    document.getElementById('input-food').value = "";
+        document.getElementById('input-food').value = "";
     }
-    
 })
 
 // Display Search Item
