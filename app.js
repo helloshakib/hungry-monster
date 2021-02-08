@@ -11,8 +11,21 @@ document.getElementById('search-btn').addEventListener('click', function(){
     .then(data =>{
         displayMeals(data.meals);
     })
+    .catch(error => {
+        const displayFoods = document.getElementById('display-foods');
+        displayFoods.innerHTML = "";
+        document.getElementById('display-meal-details').innerHTML = ' ';
+        const notFoundFood = document.getElementById('notFound-error');
+        const notFound = document.createElement('h2')
+        notFound.innerHTML = `Sorry! This item is not available...Please Try again!`;
+        notFoundFood.appendChild(notFound);
+    })
+
+
+
     document.getElementById('input-food').value = "";
     }
+    
 })
 
 // Display Search Item
@@ -20,6 +33,7 @@ const displayMeals = data =>{
     const displayFoods = document.getElementById('display-foods');
     displayFoods.innerHTML = "";
     document.getElementById('display-meal-details').innerHTML =" ";
+    document.getElementById('notFound-error').innerHTML =" ";
     data.forEach(item => {
         const itemDiv = document.createElement('div');
         itemDiv.className = 'single-item';
